@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="new_id">test value</string>
+    <string name="menu_slideshow">Diashow</string>
+    <string name="menu_home">Startseite</string>
+    <string name="nav_header_desc">Navigationskopf</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="navigation_drawer_close">Navigationsschublade schließen</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="navigation_drawer_open">Navigationsschublade öffnen</string>
+</resources>
