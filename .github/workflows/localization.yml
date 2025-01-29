@@ -1,0 +1,39 @@
+permissions:
+  contents: write
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  update-localization:
+    name: Update Localization
+    runs-on: ubuntu-24.04
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # Step 2: Extract texts (if needed, customize this for your format/tool):
+      # NOT NEEDED FOR ANDROID!
+
+      # Step 3: Run doloc for translations
+      - name: Translate with doloc
+        env:
+          API_TOKEN: ${{ secrets.DOLOC_API_TOKEN }}
+        run: |
+          ./gradlew update-i18n
+
+      # Step 4: Check for changes and commit if needed
+      - name: Commit and push changes if any
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --ignore-cr-at-eol --quiet || (
+            git add src
+            git commit -m "Update translations via doloc"
+            git push
+          )
