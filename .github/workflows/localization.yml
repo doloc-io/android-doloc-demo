@@ -33,7 +33,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git diff --ignore-cr-at-eol --quiet || (
-            git add src
+            git add app/src/main/res
             git commit -m "Update translations via doloc"
             git push
           )
